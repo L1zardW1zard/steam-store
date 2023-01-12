@@ -1,0 +1,65 @@
+.itemWrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 263px;
+  margin: 10px;
+  height: 200px;
+  max-height: 200px;
+  * {
+    color: #fff;
+  }
+
+  .itemImg {
+    height: 50%;
+    min-height: 100px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .gameInfo {
+    min-height: 100px;
+    background-color: #17323a;
+    height: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    span {
+      width: 70%;
+      line-break: normal;
+      text-align: start;
+    }
+    * {
+      margin: 5px 10px;
+    }
+  }
+
+  .playBtnWrapper {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    min-height: 45px;
+    background-color: #837f7f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 125px;
+    left: 200px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80%;
+      width: 80%;
+      background-color: #837f7f;
+      border-radius: 50%;
+      border: 5px solid #fff;
+    }
+  }
+}

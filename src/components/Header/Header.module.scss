@@ -1,5 +1,4 @@
 header {
-  width: 80%;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -27,6 +26,7 @@ header {
   justify-content: center;
   align-items: center;
   width: 70%;
+  margin: 0 0 0 15px;
 
   .search {
     width: 100%;
@@ -48,10 +48,14 @@ header {
   .searchImg {
     position: relative;
     right: 40px;
+    pointer-events: none;
   }
 }
 
 .sort {
+  * {
+    color: #fff;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,7 +84,10 @@ header {
 }
 
 nav {
-  margin: 0 10px;
+  * {
+    color: #fff;
+  }
+  margin: 0 0 0 20px;
   background-color: #837f7f;
   border-radius: 10px;
   display: flex;
@@ -101,5 +108,13 @@ nav {
   }
   :hover {
     background-color: #b6b0b0;
+  }
+  :first-child {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+  :last-child {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
   }
 }
