@@ -1,5 +1,19 @@
 .gameList {
-  display: flex;
-  flex-flow: row wrap;
-  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 263px);
+  gap: 20px;
+  width: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .gameList {
+    grid-template-columns: repeat(2, 263px);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .gameList {
+    grid-template-columns: 263px;
+    gap: 5px;
+  }
 }

@@ -9,10 +9,14 @@
 .App {
   text-align: center;
   background: #171a21;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
 }
 
 .wrapper {
   width: 80%;
   margin: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
