@@ -9,8 +9,13 @@
     color: #fff;
   }
 
+  a {
+    max-height: 100px;
+  }
+
   .itemImg {
-    height: 50%;
+    height: 100px;
+    width: 100%;
     min-height: 100px;
     object-fit: cover;
     border-top-left-radius: 10px;
@@ -51,12 +56,12 @@
     left: 200px;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 
-    button {
+    a {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 80%;
-      width: 80%;
+      height: 60%;
+      width: 60%;
       background-color: #837f7f;
       border-radius: 50%;
       border: 5px solid #fff;

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import styles from "./GameItem.module.scss";
 
@@ -15,21 +16,23 @@ type Props = {
 const GameItem = ({ title, url, imgUrl, released, price }: Props) => {
   return (
     <div className={styles.itemWrapper}>
-      <img src={imgUrl} alt="" className={styles.itemImg} />
+      <Link to={"app/" + url}>
+        <img src={imgUrl} alt="" className={styles.itemImg} />
+      </Link>
       <div className={styles.gameInfo}>
         <span className={styles.itemTitle}>{title}</span>
         <p className={styles.itemReleaseDate}>{released}</p>
         <p className={styles.itemPrice}>{price}</p>
       </div>
       <div className={styles.playBtnWrapper}>
-        <button className={styles.playBtn}>
+        <Link to={"app/" + url} className={styles.playBtn}>
           <svg width="20" height="20" viewBox="0 -1 10 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M5.10916 1.34794C4.67016 0.943374 4.12193 0.676739 3.53263 0.581177C2.94333 0.485615 2.33894 0.56534 1.79458 0.810444C1.26614 1.02421 0.813428 1.39066 0.494288 1.86299C0.175147 2.33532 0.00406912 2.89207 0.00291443 3.46211V15.5379C0.00406912 16.108 0.175147 16.6647 0.494288 17.1371C0.813428 17.6094 1.26614 17.9758 1.79458 18.1896C2.18297 18.3658 2.60436 18.4574 3.03083 18.4584C3.7993 18.455 4.53944 18.1678 5.10916 17.6521L11.6667 11.6142C11.9599 11.3456 12.1941 11.019 12.3544 10.655C12.5146 10.291 12.5973 9.8977 12.5973 9.50003C12.5973 9.10235 12.5146 8.70902 12.3544 8.34505C12.1941 7.98108 11.9599 7.65443 11.6667 7.38586L5.10916 1.34794ZM3.60416 14.1584V4.84169L8.63875 9.50003L3.60416 14.1584Z"
               fill="white"
             />
           </svg>
-        </button>
+        </Link>
       </div>
       {/* <button className={styles.likeBtn}>
         <svg width="25" height="23" viewBox="0 0 28 23" fill="none" xmlns="http://www.w3.org/2000/svg">
