@@ -1,0 +1,105 @@
+header {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 35px 0;
+}
+
+.logo {
+  width: 150px;
+  max-width: 150px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    filter: invert(100%);
+  }
+}
+
+.searchWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+
+  .search {
+    width: 100%;
+    background-color: #837f7f;
+    color: #fff;
+    border-radius: 10px;
+    height: 30px;
+    padding: 2.5px 10px;
+    border: none;
+    margin: 0 0 0 10px;
+  }
+  ::placeholder {
+    color: #fff;
+  }
+  :focus {
+    outline: none;
+  }
+
+  .searchImg {
+    position: relative;
+    right: 40px;
+  }
+}
+
+.sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .sortBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #837f7f;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 300ms;
+    cursor: pointer;
+
+    svg {
+      pointer-events: none;
+    }
+  }
+  :hover {
+    background-color: #b6b0b0;
+  }
+
+  .sortList {
+  }
+}
+
+nav {
+  margin: 0 10px;
+  background-color: #837f7f;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+
+  align-items: center;
+
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #837f7f;
+    white-space: nowrap;
+    transition: 300ms;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  :hover {
+    background-color: #b6b0b0;
+  }
+}
