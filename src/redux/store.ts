@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import gamesReducer from "./slices/gameSlice";
-import sortReducer from "./slices/sortSlice";
+import filterReducer from "./slices/filterSlice";
+import likedListReducer from "./slices/LikedListSlice";
 
 export const store = configureStore({
   reducer: {
     games: gamesReducer,
-    sort: sortReducer,
-    //filter: filterReducer,
-    //liked: likedListReducer,
+    filters: filterReducer,
+    liked: likedListReducer,
   },
 });
 

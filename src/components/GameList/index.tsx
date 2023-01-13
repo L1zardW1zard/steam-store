@@ -1,5 +1,7 @@
 import styles from "./GameList.module.scss";
 
+import axios from "axios";
+
 import GameItem from "../GameItem";
 
 import { useAppDispatch, useAppSelector } from "../../hooks";
@@ -64,12 +66,31 @@ const tempData: Data[] = [
   },
 ];
 
+const options = {
+  method: "GET",
+  headers: {
+    "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
+    "X-RapidAPI-Host": "steam2.p.rapidapi.com",
+  },
+};
+
 const GameList = () => {
   const dispatch = useAppDispatch();
 
   const games = useAppSelector((state) => state.games.items) as Data[];
+  const currentPage = useAppSelector((state) => state.filters.currentPage);
+  const searchValue = useAppSelector((state) => state.filters.searchValue);
 
   useEffect(() => {
+    axios
+      .request({ ...options, url: `1https://steam2.p.rapidapi.com/search/${searchValue}/page/${currentPage}` })
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+
     dispatch(setGames(tempData));
   }, [dispatch]);
 

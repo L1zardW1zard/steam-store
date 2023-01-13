@@ -1,31 +1,94 @@
 .sort {
-  margin-left: 10px;
+  color: #fff;
+  margin-left: 20px;
   display: flex;
   flex-flow: column nowrap;
   max-height: 32px;
   padding: 10px 20px;
   border-radius: 10px;
   background-color: #837f7f;
-  width: 150px;
+  max-width: 150px;
+  min-width: 150px;
   text-align: start;
+  position: relative;
+  cursor: pointer;
+  transition: ease 0.3s;
 
   .sortPopup {
     position: absolute;
-    width: 150px;
     padding: 10px 20px;
     border-radius: 10px;
     background-color: #837f7f;
-    top: 80px;
-  }
-  .active {
-    background-color: rgba(240, 248, 255, 0.415);
+    width: 150px;
+    top: 40px;
+    left: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      padding: 3px 5px;
+      color: #fff;
+      transition: all ease 0.3s;
+      margin: 5px 0;
+    }
+    li:hover {
+      background-color: #b6b0b0;
+    }
   }
 
-  li {
-    display: flex;
-    align-items: center;
-    padding: 3px 5px;
-    color: #fff;
-    transition: all ease 0.3s;
+  .active {
+    background-color: rgba(255, 255, 255, 0.4);
   }
+}
+.sort:hover {
+  background-color: #b6b0b0;
+}
+
+.sortOrder {
+  * {
+    color: #fff;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .sortOrderBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #837f7f;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 300ms;
+    cursor: pointer;
+
+    svg {
+      pointer-events: none;
+    }
+  }
+  .sortOrderBtn:hover {
+    background-color: #b6b0b0;
+  }
+
+  .orderPopUp {
+    position: absolute;
+    top: 40px;
+    background-color: #837f7f;
+    border-radius: 10px;
+    width: auto;
+    padding: 5px;
+    li {
+      width: 120px;
+      margin: 5px;
+    }
+    li:hover {
+      background-color: #b6b0b0;
+    }
+  }
+}
+
+.active {
+  background-color: red;
 }

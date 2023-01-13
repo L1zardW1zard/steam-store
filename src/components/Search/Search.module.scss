@@ -1,0 +1,30 @@
+.searchWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: 0 0 0 15px;
+
+  .search {
+    width: 100%;
+    background-color: #837f7f;
+    color: #fff;
+    border-radius: 10px;
+    height: 30px;
+    padding: 2.5px 10px;
+    border: none;
+    margin: 0 0 0 10px;
+  }
+  ::placeholder {
+    color: #fff;
+  }
+  :focus {
+    outline: none;
+  }
+
+  .searchImg {
+    position: relative;
+    right: 40px;
+    pointer-events: none;
+  }
+}
