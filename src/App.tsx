@@ -16,6 +16,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="liked" element={<Liked />} />
             <Route path="app/:id" element={<GameDetails />} />
+            <Route path="liked/app/:id" element={<GameDetails />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

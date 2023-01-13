@@ -1,14 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { GameObj } from "../../components/GameItem";
 //import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 
 interface IGameSlice {
   items: [];
+  currentGame: null | GameObj;
   page: number;
 }
 
 const initialState: IGameSlice = {
   items: [],
+  currentGame: null,
   page: 1,
 };
 
@@ -33,6 +36,9 @@ export const gameSlice = createSlice({
     setGames(state, action) {
       state.items = action.payload;
     },
+    setCurrentGame(state, action) {
+      state.currentGame = action.payload;
+    },
     setPage(state, action) {
       state.page = action.payload;
     },
@@ -53,7 +59,7 @@ export const gameSlice = createSlice({
   },
 });
 
-export const { setGames, setPage } = gameSlice.actions;
+export const { setGames, setPage, setCurrentGame } = gameSlice.actions;
 
 export const selectGames = (state: RootState) => state.games;
 

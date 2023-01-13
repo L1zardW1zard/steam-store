@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Item } from "../../components/GameItem";
+import { GameObj } from "../../components/GameItem";
 import type { RootState } from "../store";
 
 interface ILikedList {
-  items: Item[];
+  items: GameObj[];
 }
 
 const initialState: ILikedList = {
@@ -15,7 +15,7 @@ export const likedList = createSlice({
   initialState,
   reducers: {
     addLikedItem(state, action) {
-      const foundItem = state.items.find((obj: Item) => {
+      const foundItem = state.items.find((obj: GameObj) => {
         if (obj.appId === action.payload.appId) {
           return obj;
         } else {
