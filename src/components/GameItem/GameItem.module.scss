@@ -5,6 +5,7 @@
   margin: 10px;
   height: 200px;
   max-height: 200px;
+  position: relative;
   * {
     color: #fff;
   }
@@ -29,7 +30,7 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: flex-start;
-    justify-content: space-evenly;
+    justify-content: center;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     span {
@@ -66,5 +67,15 @@
       border-radius: 50%;
       border: 5px solid #fff;
     }
+  }
+
+  .likeBtn {
+    background-color: rgba(0, 0, 0, 0);
+    width: 25px;
+    height: 25px;
+    border: none;
+    position: absolute;
+    top: 170px;
+    right: 10px;
   }
 }

@@ -7,7 +7,10 @@ interface IFilterSlice {
   sort: {
     id: number;
     name: string;
-    order: string;
+    order: {
+      id: number;
+      name: string;
+    };
   };
 }
 
@@ -17,7 +20,10 @@ const initialState: IFilterSlice = {
   sort: {
     id: 0,
     name: "Price",
-    order: "desc",
+    order: {
+      id: 0,
+      name: "Lower to bigger",
+    },
   },
 };
 
@@ -29,10 +35,12 @@ const filterSlice = createSlice({
       state.searchValue = action.payload;
     },
     setSort(state, action) {
-      state.sort = action.payload;
+      state.sort.name = action.payload.name;
+      state.sort.id = action.payload.id;
     },
     setSortOrder(state, action) {
-      state.sort.order = action.payload;
+      state.sort.order.name = action.payload.value;
+      state.sort.order.id = action.payload.id;
     },
     setCurrentPage(state, action) {
       state.currentPage = action.payload;

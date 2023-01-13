@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Item } from "../../components/GameItem";
 import type { RootState } from "../store";
 
 interface ILikedList {
-  items: [];
+  items: Item[];
 }
 
 const initialState: ILikedList = {
@@ -13,13 +14,35 @@ export const likedList = createSlice({
   name: "liked",
   initialState,
   reducers: {
-    setLikedItems(state, action) {
-      state.items = action.payload;
+    addLikedItem(state, action) {
+      const foundItem = state.items.find((obj: Item) => {
+        if (obj.appId === action.payload.appId) {
+          return obj;
+        } else {
+          return null;
+        }
+      });
+
+      if (foundItem) {
+        return;
+      } else {
+        state.items = [...state.items, action.payload];
+      }
+    },
+    removeLikedItem(state, action) {
+      const foundItem = state.items.find((obj) => {
+        if (obj.appId === action.payload.appId) {
+          return obj;
+        }
+        return null;
+      });
+
+      state.items = state.items.filter((obj) => obj !== foundItem);
     },
   },
 });
 
-export const { setLikedItems } = likedList.actions;
+export const { addLikedItem, removeLikedItem } = likedList.actions;
 
 export const selectGames = (state: RootState) => state.liked;
 

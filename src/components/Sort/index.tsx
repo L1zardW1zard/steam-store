@@ -28,8 +28,8 @@ const Sort = () => {
     setPopUpOpen(false);
   };
 
-  const onSortOrderClick = (value: string) => {
-    dispatch(setSortOrder(value));
+  const onSortOrderClick = (value: string, id: number) => {
+    dispatch(setSortOrder({ value, id }));
     setOrderPopUpOpen(false);
   };
 
@@ -74,7 +74,11 @@ const Sort = () => {
             <ul>
               {sortOrder.map((value, i) => {
                 return (
-                  <li key={i} className={sort.id === i ? "active" : ""} onClick={() => onSortOrderClick(value)}>
+                  <li
+                    key={i}
+                    className={sort.order.id === i ? "active" : ""}
+                    onClick={() => onSortOrderClick(value, i)}
+                  >
                     {value}
                   </li>
                 );
