@@ -3,7 +3,6 @@ import styles from "./GameList.module.scss";
 import axios from "axios";
 
 import GameItem from "../GameItem";
-
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { useEffect } from "react";
 import { setGames } from "../../redux/slices/gameSlice";
@@ -76,6 +75,7 @@ const options = {
 
 const GameList = () => {
   const dispatch = useAppDispatch();
+  const likeditems = useAppSelector((state) => state.liked.items);
 
   const games = useAppSelector((state) => state.games.items) as Data[];
   const currentPage = useAppSelector((state) => state.filters.currentPage);
@@ -92,23 +92,21 @@ const GameList = () => {
       });
 
     dispatch(setGames(tempData));
-  }, [dispatch]);
+  }, [dispatch, currentPage, searchValue]);
 
   return (
     <div className={styles.gameList}>
       {games.map((item, index) => {
-        return (
-          <GameItem
-            appId={item.appId}
-            title={item.title}
-            url={item.appId}
-            imgUrl={item.imgUrl}
-            released={item.released}
-            reviewSummary={item.reviewSummary}
-            price={item.price}
-            key={item.appId}
-          />
-        );
+        let liked = false;
+        likeditems.forEach((likedItem) => {
+          if (likedItem.appId === item.appId) {
+            liked = true;
+          }
+        });
+
+        const tempItem = { ...item, inLiked: liked };
+
+        return <GameItem {...tempItem} key={item.appId} />;
       })}
     </div>
   );

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
 import { addLikedItem, removeLikedItem } from "../../redux/slices/LikedListSlice";
 
@@ -13,13 +13,21 @@ export type Item = {
   released: string;
   reviewSummary: string;
   price: string;
+  inLiked?: boolean;
 };
 
-const GameItem = ({ appId, title, url, imgUrl, released, reviewSummary, price }: Item) => {
+const GameItem = ({ appId, title, url, imgUrl, released, reviewSummary, price, inLiked }: Item) => {
   const dispatch = useAppDispatch();
+  const location = useLocation();
+
+  const [liked, setLiked] = useState(false);
 
   const onClickLike = () => {
-    if (!liked) {
+    if (location.pathname === "/liked") {
+      dispatch(removeLikedItem({ appId }));
+      return;
+    }
+    if (!liked && !inLiked) {
       const tempItem: Item = {
         appId,
         title,
@@ -28,6 +36,7 @@ const GameItem = ({ appId, title, url, imgUrl, released, reviewSummary, price }:
         released,
         reviewSummary,
         price,
+        inLiked: true,
       };
       dispatch(addLikedItem(tempItem));
       setLiked(true);
@@ -37,7 +46,7 @@ const GameItem = ({ appId, title, url, imgUrl, released, reviewSummary, price }:
     }
   };
 
-  const [liked, setLiked] = useState(false);
+  const isLiked = inLiked || liked;
 
   return (
     <div className={styles.itemWrapper}>
@@ -49,7 +58,7 @@ const GameItem = ({ appId, title, url, imgUrl, released, reviewSummary, price }:
         <p className={styles.itemReleaseDate}>{released}</p>
         <p className={styles.itemPrice}>{price}</p>
       </div>
-      {liked && (
+      {isLiked && (
         <div className={styles.playBtnWrapper}>
           <Link to={"app/" + url} className={styles.playBtn}>
             <svg width="20" height="20" viewBox="0 -1 10 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +77,7 @@ const GameItem = ({ appId, title, url, imgUrl, released, reviewSummary, price }:
           onClickLike();
         }}
       >
-        {liked ? (
+        {isLiked ? (
           <svg width="25" height="23" viewBox="0 0 28 23" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M14 23C13.8245 23.001 13.6506 22.9673 13.4881 22.901C13.3257 22.8346 13.1779 22.7369 13.0533 22.6133L2.69334 12.24C1.39382 10.9269 0.664886 9.15405 0.664886 7.30663C0.664886 5.4592 1.39382 3.68639 2.69334 2.37329C4.00302 1.06731 5.77711 0.333923 7.62667 0.333923C9.47623 0.333923 11.2503 1.06731 12.56 2.37329L14 3.81329L15.44 2.37329C16.7497 1.06731 18.5238 0.333923 20.3733 0.333923C22.2229 0.333923 23.997 1.06731 25.3067 2.37329C26.6062 3.68639 27.3351 5.4592 27.3351 7.30663C27.3351 9.15405 26.6062 10.9269 25.3067 12.24L14.9467 22.6133C14.8221 22.7369 14.6743 22.8346 14.5119 22.901C14.3494 22.9673 14.1755 23.001 14 23Z"

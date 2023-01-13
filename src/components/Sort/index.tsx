@@ -33,16 +33,18 @@ const Sort = () => {
     setOrderPopUpOpen(false);
   };
 
-  //   useEffect(() => {
-  //     const outsideClickHandler = (e) => {
-  //       if (!e.composedPath().includes(sortRef.current)) setPopUpOpen(false);
-  //     };
+  // useEffect(() => {
+  //   const outsideClickHandler = (e: any) => {
+  //     if (!e.composedPath().includes(sortRef.current)) {
+  //       setPopUpOpen(false);
+  //     }
+  //   };
 
-  //     document.body.addEventListener("click", outsideClickHandler);
-  //     return () => {
-  //       document.body.removeEventListener("click", outsideClickHandler);
-  //     };
-  //   });
+  //   document.body.addEventListener("click", outsideClickHandler);
+  //   return () => {
+  //     document.body.removeEventListener("click", outsideClickHandler);
+  //   };
+  // });
 
   return (
     <>

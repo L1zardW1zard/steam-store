@@ -4,13 +4,14 @@ header {
   justify-content: center;
   align-items: center;
   padding: 35px 0;
-  width: 100%;
+  width: 80%;
   max-height: 37px;
 }
 
 .logo {
   width: 150px;
   max-width: 150px;
+  min-width: 100px;
   height: 34px;
   display: flex;
   justify-content: center;
