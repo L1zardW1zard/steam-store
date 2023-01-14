@@ -64,6 +64,7 @@
     border-radius: 10px;
     transition: 300ms;
     cursor: pointer;
+    margin-left: 10px;
 
     svg {
       pointer-events: none;
@@ -88,5 +89,41 @@
     li:hover {
       background-color: #b6b0b0;
     }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .sort {
+    margin: 0 0 0 10px;
+    grid-area: sortBy;
+    width: 100%;
+    max-width: 40px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .sort {
+    margin: 0 0 0 10px;
+    grid-area: sortBy;
+    width: 100%;
+    max-width: none;
+  }
+  .sortOrder {
+    margin: 0;
+    grid-area: sortOrder;
+  }
+  .sortOrderBtn {
+    margin-left: 0;
+  }
+  .sortPopup {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .sortOrder {
+    width: 38px;
+    margin: 0;
+    grid-area: sortOrder;
   }
 }

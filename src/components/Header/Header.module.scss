@@ -4,7 +4,7 @@ header {
   justify-content: center;
   align-items: center;
   padding: 35px 0;
-  width: 80%;
+  width: 80vw;
   max-height: 37px;
 }
 
@@ -58,5 +58,55 @@ nav {
   :last-child {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  header {
+    max-height: none;
+    display: grid;
+    gap: 10px;
+    grid-template-areas:
+      "logo   logo   logo   nav    nav    nav"
+      "search search search search search search"
+      "sortBy sortBy sortBy sortBy empty sortOrder";
+    grid-template-rows: repeat(3, 36px);
+    grid-template-columns: repeat(6, 50px);
+  }
+  .logo {
+    justify-content: center;
+    max-height: 35px;
+    grid-area: logo;
+    a {
+      height: 100%;
+      width: 90%;
+    }
+  }
+  nav {
+    margin: 0;
+    grid-area: nav;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 20px;
+      padding: 10px;
+    }
+  }
+}
+@media screen and (max-width: 375px) {
+  header {
+    max-height: none;
+    display: grid;
+    gap: 10px;
+    grid-template-areas:
+      "logo   empty   empty nav nav nav"
+      "search search search search search search"
+      "sortBy sortBy sortBy sortBy empty sortOrder";
+    grid-template-rows: repeat(3, 36px);
+    grid-template-columns: repeat(6, 40px);
+  }
+  .logo {
+    min-width: 50px;
   }
 }

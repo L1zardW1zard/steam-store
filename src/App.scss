@@ -15,11 +15,23 @@
 }
 
 .wrapper {
-  width: 80%;
   margin: auto;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  padding: 0 20px;
+}
+
+.likedList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media screen and (max-width: 375px) {
+  .wrapper {
+    padding: 0;
+  }
 }
 
 .active {

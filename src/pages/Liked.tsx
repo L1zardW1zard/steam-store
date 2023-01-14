@@ -15,9 +15,11 @@ const Liked = () => {
 
   return (
     <>
-      {items.map((item) => {
-        return <GameItem key={item.appId} {...item} />;
-      })}
+      <div className="likedList">
+        {items.map((item) => {
+          return <GameItem key={item.appId} {...item} />;
+        })}
+      </div>
     </>
   );
 };

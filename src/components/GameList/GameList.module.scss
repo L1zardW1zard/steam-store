@@ -2,12 +2,14 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  width: auto;
+  width: 100%;
+  justify-items: center;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1150px) {
   .gameList {
     grid-template-columns: repeat(2, 263px);
+    justify-content: center;
   }
 }
 
