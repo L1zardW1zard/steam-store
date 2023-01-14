@@ -6,6 +6,14 @@ import { BrowserRouter } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import debounce from "lodash.debounce";
+import { saveState } from "./localStorage";
+
+store.subscribe(
+  debounce(() => {
+    saveState(store.getState());
+  }, 800)
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
