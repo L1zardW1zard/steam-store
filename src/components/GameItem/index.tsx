@@ -23,22 +23,23 @@ const GameItem = ({ appId, title, url, imgUrl, released, reviewSummary, price, i
 
   const [liked, setLiked] = useState(false);
 
+  const tempItem: GameObj = {
+    appId,
+    title,
+    url,
+    imgUrl,
+    released,
+    reviewSummary,
+    price,
+    inLiked: true,
+  };
+
   const onClickLike = () => {
     if (location.pathname === "/liked") {
       dispatch(removeLikedItem({ appId }));
       return;
     }
     if (!liked && !inLiked) {
-      const tempItem: GameObj = {
-        appId,
-        title,
-        url,
-        imgUrl,
-        released,
-        reviewSummary,
-        price,
-        inLiked: true,
-      };
       dispatch(addLikedItem(tempItem));
       setLiked(true);
     } else {
@@ -50,16 +51,6 @@ const GameItem = ({ appId, title, url, imgUrl, released, reviewSummary, price, i
   const isLiked = inLiked || liked;
 
   const onClickImg = () => {
-    const tempItem: GameObj = {
-      appId,
-      title,
-      url,
-      imgUrl,
-      released,
-      reviewSummary,
-      price,
-      inLiked: true,
-    };
     dispatch(setCurrentGame(tempItem));
   };
 
