@@ -32,15 +32,15 @@
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
   .searchWrapper {
-    margin: 0 10px;
-    width: 340px;
+    margin: 10px 0;
+    order: 3;
+    width: 100%;
   }
 }
 @media screen and (max-width: 375px) {
   .searchWrapper {
-    width: 98%;
-    margin: 0 10px;
+    width: 100%;
   }
 }

@@ -22,11 +22,12 @@ const Home = () => {
       <GameList pageOffset={pageOffset} itemsPerPage={itemsPerPage} />
       {games.length > 4 && (
         <ReactPaginate
+          pageCount={(games.length / itemsPerPage) * 10}
           breakLabel="..."
           nextLabel=">"
           onPageChange={handlePageClick}
-          pageRangeDisplayed={itemsPerPage}
-          pageCount={games.length / itemsPerPage}
+          pageRangeDisplayed={2}
+          marginPagesDisplayed={-3}
           previousLabel="<"
           className={styles.paginate}
         />

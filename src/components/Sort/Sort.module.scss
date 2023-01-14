@@ -64,7 +64,6 @@
     border-radius: 10px;
     transition: 300ms;
     cursor: pointer;
-    margin-left: 10px;
 
     svg {
       pointer-events: none;
@@ -95,25 +94,25 @@
 @media screen and (max-width: 1000px) {
   .sort {
     margin: 0 0 0 10px;
-    grid-area: sortBy;
     width: 100%;
     max-width: 40px;
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
   .sort {
-    margin: 0 0 0 10px;
-    grid-area: sortBy;
-    width: 100%;
+    margin: 0;
+    order: 5;
     max-width: none;
+    flex: 10 1;
+    width: auto;
   }
   .sortOrder {
-    margin: 0;
-    grid-area: sortOrder;
-  }
-  .sortOrderBtn {
-    margin-left: 0;
+    margin-left: 10px;
+    order: 6;
+    flex: 2 0 1;
+    display: flex;
+    justify-content: flex-end;
   }
   .sortPopup {
     width: 100%;
@@ -122,8 +121,8 @@
 
 @media screen and (max-width: 370px) {
   .sortOrder {
-    width: 38px;
-    margin: 0;
+    width: 32px;
+    flex: 2 0 2;
     grid-area: sortOrder;
   }
 }
