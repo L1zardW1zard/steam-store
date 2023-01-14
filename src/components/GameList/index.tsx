@@ -253,7 +253,7 @@ const GameList = () => {
     } else if (sort.order.name === "Bigger to lower") {
       dispatch(setGames(temp));
     }
-  }, [dispatch, sort]);
+  }, [dispatch, sort.name, sort.order.name]);
 
   return (
     <div className={styles.gameList}>

@@ -35,11 +35,20 @@ export const fetchGames = createAsyncThunk<GameObj[], fetchType, { rejectValue: 
   "games/fetchGames",
   async function ({ currentPage, searchValue }) {
     const { data } = await axios.get(
-      `1https://steam2.p.rapidapi.com/search/${searchValue}/page/${currentPage}`,
+      `https://steam2.p.rapidapi.com/search/${searchValue}/page/${currentPage}`,
       options
     );
 
     return data as GameObj[];
+  }
+);
+
+export const fetchOneGame = createAsyncThunk<GameObj, string, { rejectValue: string }>(
+  "games/fetchOneGame",
+  async function (id) {
+    const { data } = await axios.get(`https://steam2.p.rapidapi.com/appDetail/${id}`, options);
+
+    return data as GameObj;
   }
 );
 
@@ -70,6 +79,18 @@ export const gameSlice = createSlice({
       .addCase(fetchGames.rejected, (state) => {
         state.status = "error";
         state.items = [];
+      })
+      .addCase(fetchOneGame.pending, (state) => {
+        state.status = "loading";
+        state.currentGame = null;
+      })
+      .addCase(fetchOneGame.fulfilled, (state, action) => {
+        state.status = "success";
+        state.currentGame = action.payload;
+      })
+      .addCase(fetchOneGame.rejected, (state) => {
+        state.status = "error";
+        state.currentGame = null;
       });
   },
 });

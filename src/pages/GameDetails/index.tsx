@@ -3,48 +3,39 @@ import { useParams } from "react-router-dom";
 
 import styles from "./GameDetails.module.scss";
 
-import axios from "axios";
-
 import { GameObj } from "../../components/GameItem";
-import { useAppSelector } from "../../hooks";
-
-const options = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
-    "X-RapidAPI-Host": "steam2.p.rapidapi.com",
-  },
-};
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { fetchOneGame } from "../../redux/slices/gameSlice";
 
 const GameDetails = () => {
   const params = useParams(); // params.id
   const currentGame: GameObj | null = useAppSelector((state) => state.games.currentGame);
+  const status = useAppSelector((state) => state.games.status);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (currentGame) {
       return;
     }
     if (params.id) {
-      axios
-        .request({ ...options, url: `https://steam2.p.rbapidapi.com/appDetail/${params.id}` })
-        .then(function (response) {
-          console.log(response.data);
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
+      dispatch(fetchOneGame(params.id));
     }
-  }, [params.id, currentGame]);
+  }, [params.id, currentGame, dispatch]);
+
+  if (status === "loading") {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <>
       <img src={currentGame?.imgUrl} alt="" className={styles.Img} />
       <h1 className={styles.gameTitle}>{currentGame?.title}</h1>
       <p className={styles.gameInfo}>Released: {currentGame?.released}</p>
-      <p className={styles.gameInfo}>
-        Review Summary: {currentGame?.reviewSummary && currentGame?.reviewSummary.replace("<br>", ", ")}
-      </p>
-      <p className={styles.gameInfo}>Price: {currentGame?.price}</p>
+      {currentGame?.reviewSummary && (
+        <p className={styles.gameInfo}>Review Summary: {currentGame?.reviewSummary.replace("<br>", ", ")}</p>
+      )}
+
+      {currentGame?.price && <p className={styles.gameInfo}>Price: {currentGame?.price}</p>}
     </>
   );
 };
