@@ -20,15 +20,17 @@ const Home = () => {
   return (
     <>
       <GameList pageOffset={pageOffset} itemsPerPage={itemsPerPage} />
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel=">"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={itemsPerPage}
-        pageCount={games.length / itemsPerPage}
-        previousLabel="<"
-        className={styles.paginate}
-      />
+      {games.length > 4 && (
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel=">"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={itemsPerPage}
+          pageCount={games.length / itemsPerPage}
+          previousLabel="<"
+          className={styles.paginate}
+        />
+      )}
     </>
   );
 };
