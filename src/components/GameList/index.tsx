@@ -227,14 +227,33 @@ const GameList = () => {
   const games = useAppSelector((state) => state.games.items) as GameObj[];
   const currentPage = useAppSelector((state) => state.filters.currentPage);
   const searchValue = useAppSelector((state) => state.filters.searchValue);
+  const sort = useAppSelector((state) => state.filters.sort);
 
   useEffect(() => {
     if (searchValue) {
       dispatch(fetchGames({ currentPage, searchValue }));
-    } else {
-      dispatch(setGames(tempData));
     }
   }, [dispatch, currentPage, searchValue]);
+
+  useEffect(() => {
+    let temp = [...tempData];
+    if (sort.name === "Price") {
+      temp.sort(function (a, b) {
+        return Number(b.price.replace(/\D/g, "")) - Number(a.price.replace(/\D/g, ""));
+      });
+    }
+    if (sort.name === "Publish Date") {
+      temp.sort(function (a, b) {
+        return new Date(b.released).getTime() - new Date(a.released).getTime();
+      });
+    }
+
+    if (sort.order.name === "Lower to bigger") {
+      dispatch(setGames(temp.reverse()));
+    } else if (sort.order.name === "Bigger to lower") {
+      dispatch(setGames(temp));
+    }
+  }, [dispatch, sort]);
 
   return (
     <div className={styles.gameList}>
