@@ -1,6 +1,6 @@
 .gameList {
   display: grid;
-  grid-template-columns: repeat(3, 263px);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   width: auto;
 }

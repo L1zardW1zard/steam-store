@@ -1,0 +1,19 @@
+.paginate {
+  display: flex;
+  margin: 10px;
+  li {
+    background-color: #5b5e63;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

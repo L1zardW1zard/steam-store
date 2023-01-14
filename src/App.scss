@@ -25,3 +25,11 @@
 .active {
   background-color: rgba(255, 255, 255, 0.2);
 }
+
+.selected {
+  background-color: #17323a !important;
+}
+
+.disabled {
+  filter: brightness(0.5);
+}
