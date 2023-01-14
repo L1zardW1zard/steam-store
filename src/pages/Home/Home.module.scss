@@ -1,6 +1,10 @@
 .paginate {
   display: flex;
   margin: 10px;
+
+  .page:nth-of-type(1n + 5) {
+    display: none;
+  }
   li {
     background-color: #5b5e63;
     border-radius: 50%;
