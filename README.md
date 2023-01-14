@@ -1,3 +1,8 @@
+# ***IMPORTANT***
+
+## create `.env` file in root dir and add `REACT_APP_API_KEY = 'YOUR_KEY'`
+### link to api https://rapidapi.com/psimavel/api/steam2/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
