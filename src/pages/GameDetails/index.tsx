@@ -41,7 +41,9 @@ const GameDetails = () => {
       <img src={currentGame?.imgUrl} alt="" className={styles.Img} />
       <h1 className={styles.gameTitle}>{currentGame?.title}</h1>
       <p className={styles.gameInfo}>Released: {currentGame?.released}</p>
-      <p className={styles.gameInfo}>Review Summary: {currentGame?.reviewSummary.replace("<br>", ", ")}</p>
+      <p className={styles.gameInfo}>
+        Review Summary: {currentGame?.reviewSummary && currentGame?.reviewSummary.replace("<br>", ", ")}
+      </p>
       <p className={styles.gameInfo}>Price: {currentGame?.price}</p>
     </>
   );

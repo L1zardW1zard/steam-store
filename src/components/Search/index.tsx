@@ -3,18 +3,20 @@ import React, { useState } from "react";
 import debounce from "lodash.debounce";
 
 import styles from "./Search.module.scss";
-import { useAppDispatch } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { setSearchValue } from "../../redux/slices/filterSlice";
 
 const Search = () => {
   const [value, setValue] = useState("");
+  const searchValue = useAppSelector((state) => state.filters.searchValue);
   const dispatch = useAppDispatch();
 
-  const updateSearchValue = React.useCallback(
-    debounce((value: string) => {
-      dispatch(setSearchValue(value));
-    }, 1000),
-    []
+  const updateSearchValue = React.useMemo(
+    () =>
+      debounce((value: string) => {
+        dispatch(setSearchValue(value));
+      }, 1000),
+    [dispatch]
   );
 
   const onInputChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -22,7 +24,9 @@ const Search = () => {
     updateSearchValue(e.currentTarget.value);
   };
 
-  React.useEffect(() => {}, [value]);
+  React.useEffect(() => {
+    setValue(searchValue);
+  }, [searchValue]);
 
   return (
     <div className={styles.searchWrapper}>

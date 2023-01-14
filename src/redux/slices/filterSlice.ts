@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-interface IFilterSlice {
+export interface IFilterSlice {
   searchValue: string;
   currentPage: number;
   sort: {

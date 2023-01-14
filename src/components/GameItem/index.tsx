@@ -12,7 +12,7 @@ export type GameObj = {
   url: string;
   imgUrl: string;
   released: string;
-  reviewSummary: string;
+  reviewSummary?: string;
   price: string;
   inLiked?: boolean;
 };
