@@ -19,3 +19,9 @@
 - Redux/MobX
 - Styled Components
 - TypeScript (proper strong typization required)
+
+### Result
+
+Can't understand why sorting is on client side. But I did it.
+Missed part with Redux/Mobx and used Redux-toolkit, maybe they wanted pure Redux.
+0 feedback after all
